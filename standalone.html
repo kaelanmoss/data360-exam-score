@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data 360 Consultant Exam Score</title>
+    <style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --text: #032d60;
+  --text-muted: #5c6f87;
+  --border: #d8e3f0;
+  --primary: #0176d3;
+  --primary-dark: #014486;
+  --success: #2e844a;
+  --success-soft: #e8f5ec;
+  --danger: #ba0517;
+  --danger-soft: #fde8ea;
+  --ring-track: #e5edf7;
+  --shadow: 0 18px 50px rgba(3, 45, 96, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(1, 118, 211, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(46, 132, 74, 0.08), transparent 24%),
+    var(--bg);
+}
+
+a {
+  color: var(--primary);
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(1, 118, 211, 0.1);
+  color: var(--primary-dark);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 14px 0 10px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.exam-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.exam-meta span {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.layout {
+  display: grid;
+  gap: 24px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.card-header h2,
+.breakdown h3 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+
+.card-header p,
+.breakdown p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.section-inputs {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.section-input {
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fbfdff;
+}
+
+.section-input-copy {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.section-input-name {
+  font-weight: 600;
+}
+
+.section-input-weight {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.section-input-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-input-field input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--text);
+  background: var(--surface);
+}
+
+.section-input-field input:focus {
+  outline: 2px solid rgba(1, 118, 211, 0.25);
+  border-color: var(--primary);
+}
+
+.input-suffix {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.field-error {
+  min-height: 1.1rem;
+  color: var(--danger);
+  font-size: 0.88rem;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: #eef4fb;
+  color: var(--primary-dark);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.hidden {
+  display: none;
+}
+
+.overall-score {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 28px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.score-ring {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.score-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.score-ring-track,
+.score-ring-fill {
+  fill: none;
+  stroke-width: 10;
+}
+
+.score-ring-track {
+  stroke: var(--ring-track);
+}
+
+.score-ring-fill {
+  stroke: var(--primary);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.score-ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.score-caption {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.pass-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.pass-badge.pass {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.pass-badge.fail {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat {
+  padding: 14px;
+  border-radius: 14px;
+  background: #f8fbff;
+  border: 1px solid var(--border);
+}
+
+.stat-label {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.result-message {
+  margin: 18px 0 0;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.breakdown {
+  margin-top: 28px;
+}
+
+.breakdown-copy {
+  margin: 0 0 4px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.section-results {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.section-result {
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: #fbfdff;
+}
+
+.section-result-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.section-result-header h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.section-result-header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.section-result-score {
+  text-align: right;
+}
+
+.section-result-score span {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.section-result-score small {
+  color: var(--text-muted);
+}
+
+.progress-bar {
+  height: 10px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: var(--ring-track);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--primary), #3ba0ff);
+}
+
+.section-result-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.study-resources {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.study-resources-priority {
+  background: #f3f8ff;
+  margin: 16px -18px -18px;
+  padding: 16px 18px 18px;
+  border-top: 1px solid #c9dcf3;
+  border-radius: 0 0 16px 16px;
+}
+
+.study-resources-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.study-resources-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.study-resources-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(1, 118, 211, 0.12);
+  color: var(--primary-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.study-link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.study-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.study-link:hover {
+  border-color: var(--primary);
+  background: #f7fbff;
+  transform: translateX(2px);
+}
+
+.study-link-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.study-link-source {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: var(--primary-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.footer {
+  margin-top: 28px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 760px) {
+  .overall-score,
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .score-ring {
+    margin: 0 auto;
+  }
+
+  .section-input-copy {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-result-header,
+  .section-result-footer {
+    flex-direction: column;
+  }
+
+  .section-result-score {
+    text-align: left;
+  }
+}
+</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-badge">Salesforce Certification</div>
+        <h1>Data 360 Consultant Exam Score</h1>
+        <p class="hero-subtitle">
+          Enter the section percentages from your Salesforce exam results email to
+          estimate your overall score and how many questions you got right in each
+          section.
+        </p>
+        <div class="exam-meta">
+          <span>60 questions</span>
+          <span>105 minutes</span>
+          <span>70% to pass</span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="card input-card">
+          <div class="card-header">
+            <h2>Section Scores</h2>
+            <p>
+              Copy the percentage for each section from your exam results email.
+              Salesforce reports these as section-level percentages, not exact
+              question counts.
+            </p>
+          </div>
+
+          <form id="score-form" novalidate>
+            <div id="section-inputs" class="section-inputs"></div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                Calculate Score
+              </button>
+              <button type="button" id="sample-btn" class="btn btn-secondary">
+                Load Sample
+              </button>
+              <button type="button" id="clear-btn" class="btn btn-ghost">
+                Clear
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section id="results-card" class="card results-card hidden" aria-live="polite">
+          <div class="card-header">
+            <h2>Your Results</h2>
+            <p id="results-subtitle">Estimated from your section percentages.</p>
+          </div>
+
+          <div class="overall-score">
+            <div class="score-ring" id="score-ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="score-ring-track" cx="60" cy="60" r="52" />
+                <circle class="score-ring-fill" id="score-ring-fill" cx="60" cy="60" r="52" />
+              </svg>
+              <div class="score-ring-label">
+                <span class="score-value" id="overall-score">0%</span>
+                <span class="score-caption">Overall Score</span>
+              </div>
+            </div>
+
+            <div class="overall-details">
+              <div id="pass-badge" class="pass-badge">Pass</div>
+              <div class="stat-grid">
+                <div class="stat">
+                  <span class="stat-label">Passing Score</span>
+                  <span class="stat-value">70%</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Est. Questions Correct</span>
+                  <span class="stat-value" id="total-correct">0 / 60</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Points From Passing</span>
+                  <span class="stat-value" id="points-from-pass">0</span>
+                </div>
+              </div>
+              <p id="result-message" class="result-message"></p>
+            </div>
+          </div>
+
+          <div class="breakdown">
+            <h3>Section Breakdown</h3>
+            <p class="breakdown-copy">
+              Sections are ordered by room to improve. Each section includes links
+              to official Salesforce Help articles and Trailhead modules for that
+              topic.
+            </p>
+            <div id="section-results" class="section-results"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>
+          Estimates are based on the official
+          <a
+            href="https://help.salesforce.com/s/articleView?id=005298940&type=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Data 360 Consultant exam guide</a
+          >. This is not an official Salesforce tool.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+const EXAM = {
+  name: "Data 360 Consultant",
+  questionCount: 60,
+  passingScore: 70,
+  sections: {
+    "Solution Positioning": 14,
+    "Data 360 Setup and Administration": 13,
+    "Data Source Connection and Ingestion": 18,
+    "Harmonization and Unification": 17,
+    "Data Enhancements, Sharing, and Analysis": 18,
+    "Data Activations and Utilization": 20,
+  },
+};
+
+const STUDY_RESOURCES = {
+  "Solution Positioning": [
+    {
+      label: "Data 360 Overview",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_cloud.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Product Considerations",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_product_considerations.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Architecture Strategy",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_cloud_architecture_strategy.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Customer 360 Data Model",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_customer360_lm.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Prepare for the Data 360 Consultant Exam",
+      url: "https://trailhead.salesforce.com/content/learn/trails/prepare-for-your-salesforce-data-360-consultant-exam",
+      source: "Trailhead",
+    },
+  ],
+  "Data 360 Setup and Administration": [
+    {
+      label: "Set Up and Provision Data 360",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_setup_provision.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "User Permissions",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_userpermissions.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Sandbox Considerations",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_cloud_sandbox_consideration.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Limits and Guidelines",
+      url: "https://help.salesforce.com/s/articleView?id=sf.c360_a_limits_and_guidelines.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Deploy and Validate Data 360 Configurations",
+      url: "https://trailhead.salesforce.com/content/learn/modules/data-360-sandboxes/deploy-and-validate-your-data-360-configurations",
+      source: "Trailhead",
+    },
+  ],
+  "Data Source Connection and Ingestion": [
+    {
+      label: "Data Streams",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_streams.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Connection Tasks",
+      url: "https://help.salesforce.com/s/articleView?id=sf.c360_a_connection_tasks.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Data 360 Glossary",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_glossary_guide.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Connect and Ingest Data",
+      url: "https://trailhead.salesforce.com/content/learn/modules/data-cloud-connect-and-unify",
+      source: "Trailhead",
+    },
+    {
+      label: "Explore Setup to Activation Trail",
+      url: "https://trailhead.salesforce.com/content/learn/trails/data-cloud-explore-setup-to-activation",
+      source: "Trailhead",
+    },
+  ],
+  "Harmonization and Unification": [
+    {
+      label: "Identity Resolution",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_identity_resolution.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Unified and Link Objects",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_identity_resolution_data_modeling_unified_and_link_objects.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Customer 360 Data Model Objects",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_c360datamodel.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Map and Unify Data",
+      url: "https://trailhead.salesforce.com/content/learn/modules/data-cloud-connect-and-unify/map-and-unify-data",
+      source: "Trailhead",
+    },
+    {
+      label: "Configure Identity Resolution Rules",
+      url: "https://trailhead.salesforce.com/content/learn/modules/data-and-identity-in-salesforce-cdp/configure-identity-resolution-rules",
+      source: "Trailhead",
+    },
+  ],
+  "Data Enhancements, Sharing, and Analysis": [
+    {
+      label: "Data Governance Capabilities",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_gov_capabilities.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Data Shares",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_shares.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Calculated Insights in Segments",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_calculated_insights_in_segments.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Business Intelligence and Analytics",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_business_intelligence_analytics.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Create a Calculated Insight",
+      url: "https://trailhead.salesforce.com/content/learn/projects/explore-data-cloud-core-functionality/create-an-insight",
+      source: "Trailhead",
+    },
+  ],
+  "Data Activations and Utilization": [
+    {
+      label: "Segments",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_segments.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Segmentation Interface",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_segmentation_interface.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Activation for a Segment",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_activation_for_a_segment.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Data Actions",
+      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_actions_cdp.htm&type=5",
+      source: "Help",
+    },
+    {
+      label: "Customer 360 Audiences Segmentation",
+      url: "https://trailhead.salesforce.com/content/learn/modules/customer-360-audiences-segmentation",
+      source: "Trailhead",
+    },
+  ],
+};
+
+const SAMPLE_SCORES = {
+  "Solution Positioning": 78,
+  "Data 360 Setup and Administration": 65,
+  "Data Source Connection and Ingestion": 82,
+  "Harmonization and Unification": 58,
+  "Data Enhancements, Sharing, and Analysis": 71,
+  "Data Activations and Utilization": 74,
+};
+
+function distributeQuestions(totalQuestions, weights) {
+  const entries = Object.entries(weights);
+  const buckets = entries.map(([name, weight]) => {
+    const exact = (weight / 100) * totalQuestions;
+    return { name, weight, exact, count: Math.floor(exact) };
+  });
+
+  let assigned = buckets.reduce((sum, bucket) => sum + bucket.count, 0);
+  const remaining = totalQuestions - assigned;
+
+  buckets
+    .slice()
+    .sort((a, b) => b.exact - b.count - (a.exact - a.count))
+    .slice(0, remaining)
+    .forEach((bucket) => {
+      buckets.find((item) => item.name === bucket.name).count += 1;
+    });
+
+  return Object.fromEntries(buckets.map((bucket) => [bucket.name, bucket.count]));
+}
+
+function computeWeightedScore(scores, weights) {
+  let total = 0;
+  for (const [name, weight] of Object.entries(weights)) {
+    const value = scores[name];
+    if (value === undefined || Number.isNaN(value)) continue;
+    total += value * weight * 0.01;
+  }
+  return Math.round(total);
+}
+
+function estimateCorrect(scorePercent, questionCount) {
+  return Math.round((scorePercent / 100) * questionCount);
+}
+
+function buildSectionResults(scores) {
+  const questionMap = distributeQuestions(EXAM.questionCount, EXAM.sections);
+
+  return Object.entries(EXAM.sections).map(([name, weight]) => {
+    const sectionQuestions = questionMap[name];
+    const sectionScore = scores[name] ?? 0;
+    const correct = estimateCorrect(sectionScore, sectionQuestions);
+
+    return {
+      name,
+      weight,
+      sectionQuestions,
+      sectionScore,
+      correct,
+      weightedPoints: Math.round(sectionScore * weight * 0.01),
+      roomToImprove: (weight * (100 - sectionScore)) / 100,
+    };
+  });
+}
+
+function messageForScore(finalScore, passingScore) {
+  if (finalScore >= passingScore) {
+    return "You are in passing territory based on this estimate. Nice work!";
+  }
+
+  const gap = passingScore - finalScore;
+  if (gap <= 4) {
+    return "You are very close. A focused review of your weakest sections could push you over the line.";
+  }
+  if (gap <= 9) {
+    return "You are making progress. Prioritize the highest-weight sections where your score is lowest.";
+  }
+  return "Use the section breakdown below to target your study plan around the topics with the most room to improve.";
+}
+
+const sectionInputs = document.getElementById("section-inputs");
+const scoreForm = document.getElementById("score-form");
+const resultsCard = document.getElementById("results-card");
+const overallScoreEl = document.getElementById("overall-score");
+const totalCorrectEl = document.getElementById("total-correct");
+const pointsFromPassEl = document.getElementById("points-from-pass");
+const passBadgeEl = document.getElementById("pass-badge");
+const resultMessageEl = document.getElementById("result-message");
+const sectionResultsEl = document.getElementById("section-results");
+const scoreRingFill = document.getElementById("score-ring-fill");
+
+function renderInputs(values = {}) {
+  sectionInputs.innerHTML = Object.entries(EXAM.sections)
+    .map(
+      ([name, weight]) => `
+        <label class="section-input" for="${slugify(name)}">
+          <div class="section-input-copy">
+            <span class="section-input-name">${name}</span>
+            <span class="section-input-weight">${weight}% of exam</span>
+          </div>
+          <div class="section-input-field">
+            <input
+              id="${slugify(name)}"
+              name="${name}"
+              type="number"
+              min="0"
+              max="100"
+              step="1"
+              inputmode="numeric"
+              placeholder="0"
+              value="${values[name] ?? ""}"
+              required
+            />
+            <span class="input-suffix">%</span>
+          </div>
+          <span class="field-error" data-error-for="${slugify(name)}"></span>
+        </label>
+      `,
+    )
+    .join("");
+}
+
+function slugify(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
+function readScores() {
+  const scores = {};
+  for (const name of Object.keys(EXAM.sections)) {
+    const input = scoreForm.elements[name];
+    scores[name] = input.value === "" ? NaN : Number(input.value);
+  }
+  return scores;
+}
+
+function validateScores(scores) {
+  let valid = true;
+
+  for (const [name, value] of Object.entries(scores)) {
+    const errorEl = document.querySelector(`[data-error-for="${slugify(name)}"]`);
+    if (Number.isNaN(value)) {
+      errorEl.textContent = "Enter a percentage.";
+      valid = false;
+      continue;
+    }
+    if (value < 0 || value > 100) {
+      errorEl.textContent = "Use a value between 0 and 100.";
+      valid = false;
+      continue;
+    }
+    errorEl.textContent = "";
+  }
+
+  return valid;
+}
+
+function updateScoreRing(score) {
+  const circumference = 2 * Math.PI * 52;
+  const progress = Math.max(0, Math.min(score, 100)) / 100;
+  scoreRingFill.style.strokeDasharray = `${circumference}`;
+  scoreRingFill.style.strokeDashoffset = `${circumference * (1 - progress)}`;
+}
+
+function renderStudyLinks(sectionName, sectionScore) {
+  const resources = STUDY_RESOURCES[sectionName] ?? [];
+  const needsStudy = sectionScore < EXAM.passingScore;
+
+  return `
+    <div class="study-resources ${needsStudy ? "study-resources-priority" : ""}">
+      <div class="study-resources-header">
+        <span class="study-resources-title">Official Study Resources</span>
+        ${
+          needsStudy
+            ? '<span class="study-resources-badge">Focus here</span>'
+            : ""
+        }
+      </div>
+      <ul class="study-link-list">
+        ${resources
+          .map(
+            (resource) => `
+              <li>
+                <a
+                  href="${resource.url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="study-link"
+                >
+                  <span class="study-link-label">${resource.label}</span>
+                  <span class="study-link-source">${resource.source}</span>
+                </a>
+              </li>
+            `,
+          )
+          .join("")}
+      </ul>
+    </div>
+  `;
+}
+
+function renderResults(scores) {
+  const overall = computeWeightedScore(scores, EXAM.sections);
+  const sections = buildSectionResults(scores);
+  const totalCorrect = sections.reduce((sum, section) => sum + section.correct, 0);
+  const passed = overall >= EXAM.passingScore;
+  const pointsFromPass = overall - EXAM.passingScore;
+
+  overallScoreEl.textContent = `${overall}%`;
+  totalCorrectEl.textContent = `${totalCorrect} / ${EXAM.questionCount}`;
+  pointsFromPassEl.textContent =
+    pointsFromPass >= 0 ? `+${pointsFromPass}` : `${pointsFromPass}`;
+  passBadgeEl.textContent = passed ? "Pass" : "Not Yet Passing";
+  passBadgeEl.className = `pass-badge ${passed ? "pass" : "fail"}`;
+  resultMessageEl.textContent = messageForScore(overall, EXAM.passingScore);
+  updateScoreRing(overall);
+
+  sectionResultsEl.innerHTML = sections
+    .sort((a, b) => b.roomToImprove - a.roomToImprove)
+    .map(
+      (section) => `
+        <article class="section-result">
+          <div class="section-result-header">
+            <div>
+              <h4>${section.name}</h4>
+              <p>${section.weight}% weight · ${section.sectionQuestions} questions</p>
+            </div>
+            <div class="section-result-score">
+              <span>${section.sectionScore}%</span>
+              <small>${section.correct}/${section.sectionQuestions} correct</small>
+            </div>
+          </div>
+          <div class="progress-bar" aria-hidden="true">
+            <div class="progress-fill" style="width: ${section.sectionScore}%"></div>
+          </div>
+          <div class="section-result-footer">
+            <span>${section.weightedPoints} weighted points earned</span>
+            <span>${section.roomToImprove.toFixed(1)} pts still available</span>
+          </div>
+          ${renderStudyLinks(section.name, section.sectionScore)}
+        </article>
+      `,
+    )
+    .join("");
+
+  resultsCard.classList.remove("hidden");
+  resultsCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+scoreForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const scores = readScores();
+  if (!validateScores(scores)) return;
+  renderResults(scores);
+});
+
+document.getElementById("sample-btn").addEventListener("click", () => {
+  renderInputs(SAMPLE_SCORES);
+  renderResults(SAMPLE_SCORES);
+});
+
+document.getElementById("clear-btn").addEventListener("click", () => {
+  renderInputs();
+  resultsCard.classList.add("hidden");
+});
+
+renderInputs();
+</script>
+  </body>
+</html>

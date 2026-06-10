@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data 360 Consultant Exam Score</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-badge">Salesforce Certification</div>
+        <h1>Data 360 Consultant Exam Score</h1>
+        <p class="hero-subtitle">
+          Enter the section percentages from your Salesforce exam results email to
+          estimate your overall score and how many questions you got right in each
+          section.
+        </p>
+        <div class="exam-meta">
+          <span>60 questions</span>
+          <span>105 minutes</span>
+          <span>70% to pass</span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="card input-card">
+          <div class="card-header">
+            <h2>Section Scores</h2>
+            <p>
+              Copy the percentage for each section from your exam results email.
+              Salesforce reports these as section-level percentages, not exact
+              question counts.
+            </p>
+          </div>
+
+          <form id="score-form" novalidate>
+            <div id="section-inputs" class="section-inputs"></div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                Calculate Score
+              </button>
+              <button type="button" id="sample-btn" class="btn btn-secondary">
+                Load Sample
+              </button>
+              <button type="button" id="clear-btn" class="btn btn-ghost">
+                Clear
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section id="results-card" class="card results-card hidden" aria-live="polite">
+          <div class="card-header">
+            <h2>Your Results</h2>
+            <p id="results-subtitle">Estimated from your section percentages.</p>
+          </div>
+
+          <div class="overall-score">
+            <div class="score-ring" id="score-ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="score-ring-track" cx="60" cy="60" r="52" />
+                <circle class="score-ring-fill" id="score-ring-fill" cx="60" cy="60" r="52" />
+              </svg>
+              <div class="score-ring-label">
+                <span class="score-value" id="overall-score">0%</span>
+                <span class="score-caption">Overall Score</span>
+              </div>
+            </div>
+
+            <div class="overall-details">
+              <div id="pass-badge" class="pass-badge">Pass</div>
+              <div class="stat-grid">
+                <div class="stat">
+                  <span class="stat-label">Passing Score</span>
+                  <span class="stat-value">70%</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Est. Questions Correct</span>
+                  <span class="stat-value" id="total-correct">0 / 60</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Points From Passing</span>
+                  <span class="stat-value" id="points-from-pass">0</span>
+                </div>
+              </div>
+              <p id="result-message" class="result-message"></p>
+            </div>
+          </div>
+
+          <div class="breakdown">
+            <h3>Section Breakdown</h3>
+            <p class="breakdown-copy">
+              Sections are ordered by room to improve. Each section includes links
+              to official Salesforce Help articles and Trailhead modules for that
+              topic.
+            </p>
+            <div id="section-results" class="section-results"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>
+          Estimates are based on the official
+          <a
+            href="https://help.salesforce.com/s/articleView?id=005298940&type=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Data 360 Consultant exam guide</a
+          >. This is not an official Salesforce tool.
+        </p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
