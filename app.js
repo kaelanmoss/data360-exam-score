@@ -208,40 +208,62 @@ function updateScoreRing(score) {
   scoreRingFill.style.strokeDashoffset = `${circumference * (1 - progress)}`;
 }
 
-function renderStudyLinks(exam, sectionName, sectionScore, tier) {
+function resourceTypeKey(resource) {
+  if (
+    resource.source === "Trailhead" ||
+    resource.url.includes("trailhead.salesforce.com")
+  ) {
+    return "trailhead";
+  }
+  return "help";
+}
+
+function resourceTypeLabel(type) {
+  return type === "trailhead" ? "Trailhead" : "Salesforce Help";
+}
+
+function renderStudyLinks(exam, sectionName, tier) {
   const resources = exam.studyResources[sectionName] ?? [];
-  const needsStudy = tier === "weak";
+  const resourceCount = resources.length;
+  const openByDefault = tier === "weak" ? " open" : "";
 
   return `
-    <div class="study-resources ${needsStudy ? "study-resources-priority" : ""}">
-      <div class="study-resources-header">
-        <span class="study-resources-title">Official Study Resources</span>
-        ${
-          needsStudy
-            ? '<span class="study-resources-badge">Focus here</span>'
-            : ""
-        }
+    <details class="study-resources-details"${openByDefault}>
+      <summary class="study-resources-summary">
+        <span class="study-resources-summary-text">
+          Official study resources
+          <span class="study-resources-count">${resourceCount}</span>
+        </span>
+        ${tier === "weak" ? '<span class="study-resources-badge">Focus here</span>' : ""}
+      </summary>
+      <div class="study-resources-panel">
+        <p class="study-resources-intro">
+          Choose a resource type: <span class="resource-legend-help">Salesforce Help</span> for documentation, or <span class="resource-legend-trailhead">Trailhead</span> for guided learning.
+        </p>
+        <ul class="study-link-list">
+          ${resources
+            .map((resource) => {
+              const type = resourceTypeKey(resource);
+              return `
+                <li>
+                  <a
+                    href="${resource.url}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="study-link study-link-${type}"
+                  >
+                    <span class="study-link-type study-link-type-${type}">
+                      ${resourceTypeLabel(type)}
+                    </span>
+                    <span class="study-link-label">${resource.label}</span>
+                  </a>
+                </li>
+              `;
+            })
+            .join("")}
+        </ul>
       </div>
-      <ul class="study-link-list">
-        ${resources
-          .map(
-            (resource) => `
-              <li>
-                <a
-                  href="${resource.url}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="study-link"
-                >
-                  <span class="study-link-label">${resource.label}</span>
-                  <span class="study-link-source">${resource.source}</span>
-                </a>
-              </li>
-            `,
-          )
-          .join("")}
-      </ul>
-    </div>
+    </details>
   `;
 }
 
@@ -263,7 +285,6 @@ function renderResults(scores) {
   updateScoreRing(overall);
 
   sectionResultsEl.innerHTML = sections
-    .sort((a, b) => b.roomToImprove - a.roomToImprove)
     .map(
       (section) => `
         <article class="section-result section-tier-${section.tier}">
@@ -285,7 +306,7 @@ function renderResults(scores) {
             <span>${section.weightedPoints} weighted points earned</span>
             <span>${section.roomToImprove.toFixed(1)} pts still available</span>
           </div>
-          ${renderStudyLinks(exam, section.name, section.sectionScore, section.tier)}
+          ${renderStudyLinks(exam, section.name, section.tier)}
         </article>
       `,
     )

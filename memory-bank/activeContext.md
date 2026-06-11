@@ -4,13 +4,15 @@
 
 ## Current focus
 
-App now supports **two exams** via dropdown. Latest ship: Marketing Cloud Email Specialist + section color coding.
+UX polish for exam picker, section breakdown order, and study resources.
 
 ## Just completed
 
-- Exam selector (Data 360 Consultant + MC Email Specialist)
-- Email Specialist weighted sections, 67% pass, official study links
-- Section cards: pastel red (≤59%), yellow (60–84%), green (≥85%)
+- Prominent **Step 1 / Step 2** flow with dedicated exam picker card
+- Section breakdown keeps same order as input sections (no sort by room to improve)
+- Study resources collapsed in `<details>` dropdown; weak sections open by default
+- Tier colors (red/yellow/green) extend through full card including study panel
+- Help vs Trailhead resource badges and distinct link styling
 
 ## Open questions
 

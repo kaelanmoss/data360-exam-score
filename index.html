@@ -18,28 +18,44 @@
         <div class="hero-badge">Salesforce Certification</div>
         <h1 id="hero-title">Salesforce Exam Score</h1>
         <p class="hero-subtitle">
-          Enter the section percentages from your Salesforce exam results email to
-          estimate your overall score, see how many questions you likely got right
-          per section, and jump to official study resources.
+          Estimate your certification score from your Salesforce exam results email,
+          see how you did in each section, and open official study resources.
         </p>
         <div class="exam-meta" id="exam-meta"></div>
       </header>
 
       <main class="layout">
-        <section class="card input-card">
-          <div class="card-header">
-            <h2>Section Scores</h2>
-            <p>
-              Choose your exam, then copy each section percentage from your results
-              email. Salesforce reports section-level percentages, not exact question
-              counts.
-            </p>
-          </div>
+        <section class="card exam-picker-card" aria-labelledby="exam-picker-heading">
+          <div class="step-badge">Step 1 of 2</div>
+          <h2 id="exam-picker-heading" class="exam-picker-title">
+            Choose your certification exam
+          </h2>
+          <p class="exam-picker-copy">
+            Start here. Pick the exam you took (or are retaking), then enter your
+            section scores in Step 2 below.
+          </p>
 
           <label class="exam-select-label" for="exam-select">
-            <span>Certification exam</span>
-            <select id="exam-select" class="exam-select"></select>
+            <span class="exam-select-label-text">Select an exam</span>
+            <div class="exam-select-wrap">
+              <select id="exam-select" class="exam-select" aria-describedby="exam-select-hint"></select>
+              <span class="exam-select-chevron" aria-hidden="true">▾</span>
+            </div>
           </label>
+          <p id="exam-select-hint" class="exam-select-hint">
+            Click the menu above to switch between available certification exams.
+          </p>
+        </section>
+
+        <section class="card input-card">
+          <div class="card-header">
+            <div class="step-badge">Step 2 of 2</div>
+            <h2>Enter your section scores</h2>
+            <p>
+              Copy each section percentage from your Salesforce exam results email,
+              then click <strong>Calculate Score</strong>.
+            </p>
+          </div>
 
           <form id="score-form" novalidate>
             <div id="section-inputs" class="section-inputs"></div>
@@ -105,9 +121,9 @@
           <div class="breakdown">
             <h3>Section Breakdown</h3>
             <p class="breakdown-copy">
-              Sections are ordered by room to improve. Each card is color-coded by
-              your section score and includes official Salesforce Help articles and
-              Trailhead modules.
+              Sections appear in the same order as above. Each card is color-coded by
+              your section score. Expand <strong>Official study resources</strong> on
+              any section to see Help docs and Trailhead modules.
             </p>
             <div id="section-results" class="section-results"></div>
           </div>
