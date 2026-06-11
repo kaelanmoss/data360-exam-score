@@ -2,7 +2,7 @@
 
 ## One-liner
 
-A free web tool that turns Salesforce Data 360 Consultant exam section percentages into an estimated overall score, per-section question breakdown, and official study links — embedded on the owner's Wix site for others to use.
+A free web tool that turns Salesforce certification exam section percentages into an estimated overall score, per-section question breakdown, color-coded section review, and official study links — embedded on the owner's Wix site for others to use.
 
 ## Problem
 
@@ -16,14 +16,21 @@ After taking the exam, Salesforce emails section-level percentages, not exact qu
 - People preparing for or retaking the **Salesforce Data 360 Consultant** certification
 - Study partners shared via the Wix embed link
 
+## Supported exams
+
+1. **Data 360 Consultant** — 6 sections, 70% to pass, 105 min
+2. **Marketing Cloud Email Specialist** — 5 sections, 67% to pass, 90 min
+
 ## Current features (shipped)
 
-- [x] Input 6 official exam section percentages
+- [x] Exam selector dropdown
+- [x] Input official exam section percentages
 - [x] Weighted overall score (70% passing threshold)
 - [x] Estimated questions correct per section (60 questions total)
 - [x] Section breakdown sorted by "room to improve"
 - [x] Official Salesforce Help + Trailhead study links per section
-- [x] "Focus here" highlight on sections below passing
+- [x] Section color tiers: red ≤59%, yellow 60–84%, green ≥85%
+- [x] "Focus here" highlight on weak sections (≤59%)
 - [x] Sample data demo button
 - [x] Hosted on GitHub Pages
 - [x] Embedded on Wix via iframe
