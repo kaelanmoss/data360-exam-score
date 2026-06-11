@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data 360 Consultant Exam Score</title>
+    <title>Salesforce Exam Score Calculator</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,17 +16,13 @@
     <div class="page">
       <header class="hero">
         <div class="hero-badge">Salesforce Certification</div>
-        <h1>Data 360 Consultant Exam Score</h1>
+        <h1 id="hero-title">Salesforce Exam Score</h1>
         <p class="hero-subtitle">
           Enter the section percentages from your Salesforce exam results email to
-          estimate your overall score and how many questions you got right in each
-          section.
+          estimate your overall score, see how many questions you likely got right
+          per section, and jump to official study resources.
         </p>
-        <div class="exam-meta">
-          <span>60 questions</span>
-          <span>105 minutes</span>
-          <span>70% to pass</span>
-        </div>
+        <div class="exam-meta" id="exam-meta"></div>
       </header>
 
       <main class="layout">
@@ -34,11 +30,16 @@
           <div class="card-header">
             <h2>Section Scores</h2>
             <p>
-              Copy the percentage for each section from your exam results email.
-              Salesforce reports these as section-level percentages, not exact
-              question counts.
+              Choose your exam, then copy each section percentage from your results
+              email. Salesforce reports section-level percentages, not exact question
+              counts.
             </p>
           </div>
+
+          <label class="exam-select-label" for="exam-select">
+            <span>Certification exam</span>
+            <select id="exam-select" class="exam-select"></select>
+          </label>
 
           <form id="score-form" novalidate>
             <div id="section-inputs" class="section-inputs"></div>
@@ -63,6 +64,12 @@
             <p id="results-subtitle">Estimated from your section percentages.</p>
           </div>
 
+          <div class="score-legend" aria-label="Section score color guide">
+            <span class="legend-item legend-weak">59% or below — needs focus</span>
+            <span class="legend-item legend-mid">60–84% — getting there</span>
+            <span class="legend-item legend-strong">85%+ — strong section</span>
+          </div>
+
           <div class="overall-score">
             <div class="score-ring" id="score-ring">
               <svg viewBox="0 0 120 120" aria-hidden="true">
@@ -80,7 +87,7 @@
               <div class="stat-grid">
                 <div class="stat">
                   <span class="stat-label">Passing Score</span>
-                  <span class="stat-value">70%</span>
+                  <span class="stat-value" id="passing-score">70%</span>
                 </div>
                 <div class="stat">
                   <span class="stat-label">Est. Questions Correct</span>
@@ -98,9 +105,9 @@
           <div class="breakdown">
             <h3>Section Breakdown</h3>
             <p class="breakdown-copy">
-              Sections are ordered by room to improve. Each section includes links
-              to official Salesforce Help articles and Trailhead modules for that
-              topic.
+              Sections are ordered by room to improve. Each card is color-coded by
+              your section score and includes official Salesforce Help articles and
+              Trailhead modules.
             </p>
             <div id="section-results" class="section-results"></div>
           </div>
@@ -111,15 +118,17 @@
         <p>
           Estimates are based on the official
           <a
+            id="exam-guide-link"
             href="https://help.salesforce.com/s/articleView?id=005298940&type=1"
             target="_blank"
             rel="noopener noreferrer"
-            >Data 360 Consultant exam guide</a
+            >exam guide</a
           >. This is not an official Salesforce tool.
         </p>
       </footer>
     </div>
 
+    <script src="exams.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

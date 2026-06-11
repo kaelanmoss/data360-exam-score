@@ -4,19 +4,19 @@
 
 ## Current focus
 
-Setting up **agent memory** (AGENTS.md + memory-bank) so future chat sessions can continue growing the app without re-explaining everything.
+App now supports **two exams** via dropdown. Latest ship: Marketing Cloud Email Specialist + section color coding.
 
 ## Just completed
 
-- GitHub repo created and pushed
-- GitHub Pages live
-- Wix iframe embed working
-- Study resource links per exam section
-- Agent memory system scaffolded
+- Exam selector (Data 360 Consultant + MC Email Specialist)
+- Email Specialist weighted sections, 67% pass, official study links
+- Section cards: pastel red (≤59%), yellow (60–84%), green (≥85%)
 
 ## Open questions
 
-- Which roadmap item to tackle first? (paste-from-email, shareable URL, dark mode, etc.)
+- Add more certifications?
+- Paste-from-email parser?
+- Shareable results URL?
 - Does the Wix iframe height need tuning as results grow?
 - Should we add a simple README on GitHub for other contributors?
 

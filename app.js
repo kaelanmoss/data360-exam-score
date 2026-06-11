@@ -1,190 +1,10 @@
-const EXAM = {
-  name: "Data 360 Consultant",
-  questionCount: 60,
-  passingScore: 70,
-  sections: {
-    "Solution Positioning": 14,
-    "Data 360 Setup and Administration": 13,
-    "Data Source Connection and Ingestion": 18,
-    "Harmonization and Unification": 17,
-    "Data Enhancements, Sharing, and Analysis": 18,
-    "Data Activations and Utilization": 20,
-  },
-};
+const DEFAULT_EXAM_ID = "data-360-consultant";
 
-const STUDY_RESOURCES = {
-  "Solution Positioning": [
-    {
-      label: "Data 360 Overview",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_cloud.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Product Considerations",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_product_considerations.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Architecture Strategy",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_cloud_architecture_strategy.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Customer 360 Data Model",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_customer360_lm.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Prepare for the Data 360 Consultant Exam",
-      url: "https://trailhead.salesforce.com/content/learn/trails/prepare-for-your-salesforce-data-360-consultant-exam",
-      source: "Trailhead",
-    },
-  ],
-  "Data 360 Setup and Administration": [
-    {
-      label: "Set Up and Provision Data 360",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_setup_provision.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "User Permissions",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_userpermissions.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Sandbox Considerations",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_cloud_sandbox_consideration.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Limits and Guidelines",
-      url: "https://help.salesforce.com/s/articleView?id=sf.c360_a_limits_and_guidelines.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Deploy and Validate Data 360 Configurations",
-      url: "https://trailhead.salesforce.com/content/learn/modules/data-360-sandboxes/deploy-and-validate-your-data-360-configurations",
-      source: "Trailhead",
-    },
-  ],
-  "Data Source Connection and Ingestion": [
-    {
-      label: "Data Streams",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_streams.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Connection Tasks",
-      url: "https://help.salesforce.com/s/articleView?id=sf.c360_a_connection_tasks.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Data 360 Glossary",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_glossary_guide.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Connect and Ingest Data",
-      url: "https://trailhead.salesforce.com/content/learn/modules/data-cloud-connect-and-unify",
-      source: "Trailhead",
-    },
-    {
-      label: "Explore Setup to Activation Trail",
-      url: "https://trailhead.salesforce.com/content/learn/trails/data-cloud-explore-setup-to-activation",
-      source: "Trailhead",
-    },
-  ],
-  "Harmonization and Unification": [
-    {
-      label: "Identity Resolution",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_identity_resolution.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Unified and Link Objects",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_identity_resolution_data_modeling_unified_and_link_objects.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Customer 360 Data Model Objects",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_c360datamodel.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Map and Unify Data",
-      url: "https://trailhead.salesforce.com/content/learn/modules/data-cloud-connect-and-unify/map-and-unify-data",
-      source: "Trailhead",
-    },
-    {
-      label: "Configure Identity Resolution Rules",
-      url: "https://trailhead.salesforce.com/content/learn/modules/data-and-identity-in-salesforce-cdp/configure-identity-resolution-rules",
-      source: "Trailhead",
-    },
-  ],
-  "Data Enhancements, Sharing, and Analysis": [
-    {
-      label: "Data Governance Capabilities",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_gov_capabilities.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Data Shares",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_shares.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Calculated Insights in Segments",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_calculated_insights_in_segments.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Business Intelligence and Analytics",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_business_intelligence_analytics.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Create a Calculated Insight",
-      url: "https://trailhead.salesforce.com/content/learn/projects/explore-data-cloud-core-functionality/create-an-insight",
-      source: "Trailhead",
-    },
-  ],
-  "Data Activations and Utilization": [
-    {
-      label: "Segments",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_segments.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Segmentation Interface",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_segmentation_interface.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Activation for a Segment",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_activation_for_a_segment.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Data Actions",
-      url: "https://help.salesforce.com/s/articleView?id=data.c360_a_data_actions_cdp.htm&type=5",
-      source: "Help",
-    },
-    {
-      label: "Customer 360 Audiences Segmentation",
-      url: "https://trailhead.salesforce.com/content/learn/modules/customer-360-audiences-segmentation",
-      source: "Trailhead",
-    },
-  ],
-};
+let currentExamId = DEFAULT_EXAM_ID;
 
-const SAMPLE_SCORES = {
-  "Solution Positioning": 78,
-  "Data 360 Setup and Administration": 65,
-  "Data Source Connection and Ingestion": 82,
-  "Harmonization and Unification": 58,
-  "Data Enhancements, Sharing, and Analysis": 71,
-  "Data Activations and Utilization": 74,
-};
+function getExam() {
+  return EXAMS[currentExamId];
+}
 
 function distributeQuestions(totalQuestions, weights) {
   const entries = Object.entries(weights);
@@ -221,13 +41,26 @@ function estimateCorrect(scorePercent, questionCount) {
   return Math.round((scorePercent / 100) * questionCount);
 }
 
-function buildSectionResults(scores) {
-  const questionMap = distributeQuestions(EXAM.questionCount, EXAM.sections);
+function sectionPerformanceTier(score) {
+  if (score <= 59) return "weak";
+  if (score <= 84) return "mid";
+  return "strong";
+}
 
-  return Object.entries(EXAM.sections).map(([name, weight]) => {
+function sectionPerformanceLabel(tier) {
+  if (tier === "weak") return "Needs focus";
+  if (tier === "mid") return "Getting there";
+  return "Strong section";
+}
+
+function buildSectionResults(exam, scores) {
+  const questionMap = distributeQuestions(exam.questionCount, exam.sections);
+
+  return Object.entries(exam.sections).map(([name, weight]) => {
     const sectionQuestions = questionMap[name];
     const sectionScore = scores[name] ?? 0;
     const correct = estimateCorrect(sectionScore, sectionQuestions);
+    const tier = sectionPerformanceTier(sectionScore);
 
     return {
       name,
@@ -235,6 +68,8 @@ function buildSectionResults(scores) {
       sectionQuestions,
       sectionScore,
       correct,
+      tier,
+      tierLabel: sectionPerformanceLabel(tier),
       weightedPoints: Math.round(sectionScore * weight * 0.01),
       roomToImprove: (weight * (100 - sectionScore)) / 100,
     };
@@ -256,6 +91,7 @@ function messageForScore(finalScore, passingScore) {
   return "Use the section breakdown below to target your study plan around the topics with the most room to improve.";
 }
 
+const examSelect = document.getElementById("exam-select");
 const sectionInputs = document.getElementById("section-inputs");
 const scoreForm = document.getElementById("score-form");
 const resultsCard = document.getElementById("results-card");
@@ -263,12 +99,44 @@ const overallScoreEl = document.getElementById("overall-score");
 const totalCorrectEl = document.getElementById("total-correct");
 const pointsFromPassEl = document.getElementById("points-from-pass");
 const passBadgeEl = document.getElementById("pass-badge");
+const passingScoreEl = document.getElementById("passing-score");
 const resultMessageEl = document.getElementById("result-message");
 const sectionResultsEl = document.getElementById("section-results");
 const scoreRingFill = document.getElementById("score-ring-fill");
+const heroTitle = document.getElementById("hero-title");
+const examMeta = document.getElementById("exam-meta");
+const examGuideLink = document.getElementById("exam-guide-link");
+
+function renderExamSelector() {
+  examSelect.innerHTML = Object.values(EXAMS)
+    .map(
+      (exam) => `
+        <option value="${exam.id}" ${exam.id === currentExamId ? "selected" : ""}>
+          ${exam.name}
+        </option>
+      `,
+    )
+    .join("");
+}
+
+function updateExamChrome() {
+  const exam = getExam();
+  document.title = `${exam.shortName} Exam Score`;
+  heroTitle.textContent = `${exam.name} Exam Score`;
+  examMeta.innerHTML = `
+    <span>${exam.questionCount} questions</span>
+    <span>${exam.durationMinutes} minutes</span>
+    <span>${exam.passingScore}% to pass</span>
+  `;
+  passingScoreEl.textContent = `${exam.passingScore}%`;
+  examGuideLink.href = exam.examGuideUrl;
+  examGuideLink.textContent = `${exam.name} exam guide`;
+}
 
 function renderInputs(values = {}) {
-  sectionInputs.innerHTML = Object.entries(EXAM.sections)
+  const exam = getExam();
+
+  sectionInputs.innerHTML = Object.entries(exam.sections)
     .map(
       ([name, weight]) => `
         <label class="section-input" for="${slugify(name)}">
@@ -303,8 +171,9 @@ function slugify(value) {
 }
 
 function readScores() {
+  const exam = getExam();
   const scores = {};
-  for (const name of Object.keys(EXAM.sections)) {
+  for (const name of Object.keys(exam.sections)) {
     const input = scoreForm.elements[name];
     scores[name] = input.value === "" ? NaN : Number(input.value);
   }
@@ -339,9 +208,9 @@ function updateScoreRing(score) {
   scoreRingFill.style.strokeDashoffset = `${circumference * (1 - progress)}`;
 }
 
-function renderStudyLinks(sectionName, sectionScore) {
-  const resources = STUDY_RESOURCES[sectionName] ?? [];
-  const needsStudy = sectionScore < EXAM.passingScore;
+function renderStudyLinks(exam, sectionName, sectionScore, tier) {
+  const resources = exam.studyResources[sectionName] ?? [];
+  const needsStudy = tier === "weak";
 
   return `
     <div class="study-resources ${needsStudy ? "study-resources-priority" : ""}">
@@ -377,26 +246,27 @@ function renderStudyLinks(sectionName, sectionScore) {
 }
 
 function renderResults(scores) {
-  const overall = computeWeightedScore(scores, EXAM.sections);
-  const sections = buildSectionResults(scores);
+  const exam = getExam();
+  const overall = computeWeightedScore(scores, exam.sections);
+  const sections = buildSectionResults(exam, scores);
   const totalCorrect = sections.reduce((sum, section) => sum + section.correct, 0);
-  const passed = overall >= EXAM.passingScore;
-  const pointsFromPass = overall - EXAM.passingScore;
+  const passed = overall >= exam.passingScore;
+  const pointsFromPass = overall - exam.passingScore;
 
   overallScoreEl.textContent = `${overall}%`;
-  totalCorrectEl.textContent = `${totalCorrect} / ${EXAM.questionCount}`;
+  totalCorrectEl.textContent = `${totalCorrect} / ${exam.questionCount}`;
   pointsFromPassEl.textContent =
     pointsFromPass >= 0 ? `+${pointsFromPass}` : `${pointsFromPass}`;
   passBadgeEl.textContent = passed ? "Pass" : "Not Yet Passing";
   passBadgeEl.className = `pass-badge ${passed ? "pass" : "fail"}`;
-  resultMessageEl.textContent = messageForScore(overall, EXAM.passingScore);
+  resultMessageEl.textContent = messageForScore(overall, exam.passingScore);
   updateScoreRing(overall);
 
   sectionResultsEl.innerHTML = sections
     .sort((a, b) => b.roomToImprove - a.roomToImprove)
     .map(
       (section) => `
-        <article class="section-result">
+        <article class="section-result section-tier-${section.tier}">
           <div class="section-result-header">
             <div>
               <h4>${section.name}</h4>
@@ -405,16 +275,17 @@ function renderResults(scores) {
             <div class="section-result-score">
               <span>${section.sectionScore}%</span>
               <small>${section.correct}/${section.sectionQuestions} correct</small>
+              <span class="section-tier-badge">${section.tierLabel}</span>
             </div>
           </div>
           <div class="progress-bar" aria-hidden="true">
-            <div class="progress-fill" style="width: ${section.sectionScore}%"></div>
+            <div class="progress-fill progress-fill-${section.tier}" style="width: ${section.sectionScore}%"></div>
           </div>
           <div class="section-result-footer">
             <span>${section.weightedPoints} weighted points earned</span>
             <span>${section.roomToImprove.toFixed(1)} pts still available</span>
           </div>
-          ${renderStudyLinks(section.name, section.sectionScore)}
+          ${renderStudyLinks(exam, section.name, section.sectionScore, section.tier)}
         </article>
       `,
     )
@@ -424,6 +295,17 @@ function renderResults(scores) {
   resultsCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
+function switchExam(examId) {
+  currentExamId = examId;
+  updateExamChrome();
+  renderInputs();
+  resultsCard.classList.add("hidden");
+}
+
+examSelect.addEventListener("change", (event) => {
+  switchExam(event.target.value);
+});
+
 scoreForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const scores = readScores();
@@ -432,8 +314,9 @@ scoreForm.addEventListener("submit", (event) => {
 });
 
 document.getElementById("sample-btn").addEventListener("click", () => {
-  renderInputs(SAMPLE_SCORES);
-  renderResults(SAMPLE_SCORES);
+  const exam = getExam();
+  renderInputs(exam.sampleScores);
+  renderResults(exam.sampleScores);
 });
 
 document.getElementById("clear-btn").addEventListener("click", () => {
@@ -441,4 +324,6 @@ document.getElementById("clear-btn").addEventListener("click", () => {
   resultsCard.classList.add("hidden");
 });
 
+renderExamSelector();
+updateExamChrome();
 renderInputs();

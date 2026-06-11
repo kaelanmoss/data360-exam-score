@@ -112,6 +112,32 @@ a {
   line-height: 1.5;
 }
 
+.exam-select-label {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.exam-select-label span {
+  font-weight: 600;
+}
+
+.exam-select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface);
+}
+
+.exam-select:focus {
+  outline: 2px solid rgba(1, 118, 211, 0.25);
+  border-color: var(--primary);
+}
+
 .section-inputs {
   display: grid;
   gap: 16px;
@@ -337,6 +363,39 @@ a {
   line-height: 1.5;
 }
 
+.score-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.legend-item {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.legend-weak {
+  background: #fde8ea;
+  color: #8a1538;
+  border-color: #f5c6cb;
+}
+
+.legend-mid {
+  background: #fff8e1;
+  color: #7a5c00;
+  border-color: #ffe082;
+}
+
+.legend-strong {
+  background: #e8f5ec;
+  color: #1f6b35;
+  border-color: #b7dfc4;
+}
+
 .section-results {
   display: grid;
   gap: 14px;
@@ -348,6 +407,57 @@ a {
   border-radius: 16px;
   border: 1px solid var(--border);
   background: #fbfdff;
+}
+
+.section-tier-weak {
+  background: #fff5f5;
+  border-color: #f0c4c8;
+}
+
+.section-tier-mid {
+  background: #fffdf3;
+  border-color: #f0e0a8;
+}
+
+.section-tier-strong {
+  background: #f4fbf6;
+  border-color: #b9dfc6;
+}
+
+.section-tier-badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.section-tier-weak .section-tier-badge {
+  background: #fde8ea;
+  color: #8a1538;
+}
+
+.section-tier-mid .section-tier-badge {
+  background: #fff8e1;
+  color: #7a5c00;
+}
+
+.section-tier-strong .section-tier-badge {
+  background: #e8f5ec;
+  color: #1f6b35;
+}
+
+.progress-fill-weak {
+  background: linear-gradient(90deg, #d9534f, #f08080);
+}
+
+.progress-fill-mid {
+  background: linear-gradient(90deg, #e6b800, #ffd54f);
+}
+
+.progress-fill-strong {
+  background: linear-gradient(90deg, #2e844a, #5cb87a);
 }
 
 .section-result-header {
@@ -516,5 +626,9 @@ a {
 
   .section-result-score {
     text-align: left;
+  }
+
+  .score-legend {
+    flex-direction: column;
   }
 }

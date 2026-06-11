@@ -2,19 +2,25 @@
 
 ## Architecture
 
-Single-page static app. No build step. All user-facing behavior in three files.
+Single-page static app. No build step.
 
 ```
-index.html   → structure, form, results containers
-styles.css   → layout, Salesforce-inspired blue theme
-app.js       → EXAM config, STUDY_RESOURCES, scoring, DOM rendering
+index.html   → structure, exam selector, form, results
+styles.css   → layout, tier colors, Salesforce-inspired theme
+exams.js     → EXAMS config (all certifications, sections, study links)
+app.js       → scoring logic, DOM rendering, exam switching
 ```
 
-## Key data structures (`app.js`)
+## Key data structures
 
-- `EXAM` — question count, passing score, section weights
-- `STUDY_RESOURCES` — per-section array of `{ label, url, source }`
-- `SAMPLE_SCORES` — demo data for "Load Sample" button
+- `EXAMS` in `exams.js` — per exam: sections, weights, passing score, studyResources, sampleScores
+- `currentExamId` in `app.js` — active exam from dropdown
+
+## Section color tiers
+
+- ≤59% → `section-tier-weak` (pastel red)
+- 60–84% → `section-tier-mid` (pastel yellow)
+- ≥85% → `section-tier-strong` (pastel green)
 
 ## Scoring pattern
 

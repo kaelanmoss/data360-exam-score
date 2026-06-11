@@ -9,10 +9,12 @@
 | 2026-06-10 | Deployed to GitHub Pages |
 | 2026-06-10 | Embedded on Wix site |
 | 2026-06-10 | Added AGENTS.md + memory-bank for AI continuity |
+| 2026-06-10 | Multi-exam support: Data 360 + MC Email Specialist |
+| 2026-06-10 | Section color tiers (red/yellow/green) + exam selector |
 
 ## In progress
 
-- Choosing next feature from roadmap (see `projectbrief.md`)
+- None
 
 ## Blockers
 
