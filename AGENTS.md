@@ -4,20 +4,25 @@
 **Purpose**: Give AI agents persistent memory and consistent behavior across sessions.
 **Inspired by**: [AGENT-ZERO](https://github.com/msitarzewski/AGENT-ZERO/blob/main/AGENTS.md) (compaction protocol + memory bank)
 
+> **Auto-loaded by Grok.** When you open this project in Grok, this file is injected into every session automatically. You do not need to ask the agent to read it.
+
 ---
 
-## How to use this in chat
+## Mandatory automatic behavior (no user reminder needed)
 
-At the start of a work session, tell the agent:
+On **every session** in this repo, before doing any work:
 
-> Read `AGENTS.md` and the files in `memory-bank/`, then continue the project.
+1. Read `memory-bank/activeContext.md` and `memory-bank/progress.md`
+2. Read `memory-bank/projectbrief.md` if the task involves features or scope
+3. Proceed with the user's request using that context
 
-In Cursor/Grok, you can also attach or `@`-mention:
-- `AGENTS.md`
-- `memory-bank/projectbrief.md`
-- `memory-bank/activeContext.md`
+During and after work, **without being asked**:
 
-The agent should **read before coding** and **update markdown after meaningful progress**.
+- Update `memory-bank/activeContext.md` when focus changes or work pauses
+- Update `memory-bank/progress.md` when something ships or gets blocked
+- Append `memory-bank/decisions.md` when making a non-obvious technical choice
+
+The user should **not** have to say "read AGENTS.md" or "update memory bank" each time.
 
 ---
 
